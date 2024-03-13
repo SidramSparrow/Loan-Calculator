@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Calculator</title>
+    <style>
+        .container{
+            width: 100%;
+            height: 100%;
+        }
+        .container-item{
+            width: 97%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 238, 3, 0.979);
+            padding: 0px 20px;
+            position: relative;
+        }
+        .calculator{
+            width: 300px;
+            height: 80%;
+            background-color: rgb(7, 23, 29);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 20px;
+            box-shadow: 10px 10px 30px black, 15px 15px 40px darkgoldenrod;
+        }
+        #amount{
+            width: 100%;
+            text-decoration: none;
+        }
+        #rate{
+            width: 100%;
+            text-decoration: none;
+        }
+        #months{
+            width: 100%;
+            text-decoration: none;
+        }
+        p{
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 10px;
+        }
+        input{
+            margin: 15px 0px;
+            padding: 8px 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="container-item">
+            <div class="calculator">
+                <h1>Loan Calculator</h1>
+    
+                <p>
+                    Amount (₹)   :
+                        <input type="number" id="amount" onchange="Calculate()">
+                </p>
+    
+                <p>
+                    Interest Rate    :
+                        <input type="number" id="rate" onchange="Calculate()">
+                </p>
+    
+                <p>
+                    Amount to pay    :
+                        <input type="number" id="months" onchange="Calculate()">
+                </p>
+    
+                <h2 id="total"></h2>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function Calculate() {
+
+            const amount = document.querySelector('#amount').value;
+            const rate = document.querySelector('#rate').value;
+            const months = document.querySelector('#months').value;
+
+            const interest = (amount * (rate * 0.01)) / months;
+            const total = ((amount / months) * interest).toFixed(2);
+
+            document.querySelector("#total").innerHTML = "EMI : (₹)" + total;
+        }
+    </script>
+</body>
+</html>
